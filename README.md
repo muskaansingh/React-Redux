@@ -1,1 +1,1 @@
-# React-Redux
+# React-Redux (Basics)
