@@ -3,6 +3,7 @@
 const redux = require('redux');
 const createStore = redux.createStore;
 //import {createStore} from 'redux';
+const combineReducers = redux.combineReducers;  // combines multiple reducers into one!
 
 
 
@@ -29,19 +30,51 @@ function buyIcecream() {
 
 // State
 
-const initialState = {
-    numOfCakes:10,
+// const initialState = {
+//     numOfCakes:10,
+//     numOfIcecream:20
+// }
+
+const initialCakeState = {
+    numOfCakes:10
+}
+
+const initialIcecreamState = {
     numOfIcecream:20
 }
 
+
+
+
 // Reducers
 
-const reducer = (state = initialState, action) => {
+// const reducer = (state = initialState, action) => {
+//     switch (action.type) {
+//         case BUY_CAKE : return {
+//             ...state ,
+//             numOfCakes: state.numOfCakes - 1
+//         }
+//         case BUY_ICECREAM : return {
+//             ...state ,
+//             numOfIcecream: state.numOfIcecream - 1
+//         }
+//         default: return state
+//     }
+// }
+
+
+const CakeReducer = (state = initialCakeState, action) => {
     switch (action.type) {
         case BUY_CAKE : return {
             ...state ,
             numOfCakes: state.numOfCakes - 1
         }
+        default: return state
+    }
+}
+
+const IcecreamReducer = (state = initialIcecreamState, action) => {
+    switch (action.type) {
         case BUY_ICECREAM : return {
             ...state ,
             numOfIcecream: state.numOfIcecream - 1
@@ -50,7 +83,12 @@ const reducer = (state = initialState, action) => {
     }
 }
 
-const store = createStore (reducer);
+const rootReducer = combineReducers({
+    cake: CakeReducer,
+    icecream: IcecreamReducer
+})
+
+const store = createStore (rootReducer);
 
 console.log('Initial State', store.getState());
 
