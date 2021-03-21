@@ -1,0 +1,22 @@
+{
+  "name": "react-redux",
+  "version": "1.0.0",
+  "description": "React-Redux-Basics",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muskaansingh/React-Redux.git"
+  },
+  "author": "Muskaan Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muskaansingh/React-Redux/issues"
+  },
+  "homepage": "https://github.com/muskaansingh/React-Redux#readme",
+  "dependencies": {
+    "redux": "^4.0.5"
+  }
+}
