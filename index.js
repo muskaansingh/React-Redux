@@ -2,6 +2,7 @@
 
 const redux = require('redux');
 const createStore = redux.createStore;
+//import {createStore} from 'redux';
 
 
 
@@ -39,9 +40,9 @@ const store = createStore (reducer);
 
 console.log('Initial State', store.getState());
 
-store.unsubscribe = store.unsubscribe(() => {
-    console.log('Updated State', store.getState())
-});
+// store.unSubscribe = store.subscribe(() => console.log('Updated State', store.getState()));
+
+store.subscribe(() => console.log('Updated State', store.getState()));
 
 store.dispatch(buyCake());
 store.dispatch(buyCake());
@@ -49,4 +50,4 @@ store.dispatch(buyCake());
 store.dispatch(buyCake());
 store.dispatch(buyCake());
 
-unsubscribe();
+// unSubscribe();
