@@ -1,13 +1,21 @@
 //console.log('From index.js');
 
+const redux = require('redux');
+const createStore = redux.createStore;
+
+
 
 // Action
 
 const BUY_CAKE = 'BUY_CAKE'
-{
-    type: BUY_CAKE
-    info: 'First Redux Action'
+
+function buyCake() {
+    return {
+        type: BUY_CAKE,
+        info: 'First Redux Action'
+    }
 }
+
 
 // State
 
@@ -26,3 +34,19 @@ const reducer = (state = initialState, action) => {
         default: return state
     }
 }
+
+const store = createStore (reducer);
+
+console.log('Initial State', store.getState());
+
+store.unsubscribe = store.unsubscribe(() => {
+    console.log('Updated State', store.getState())
+});
+
+store.dispatch(buyCake());
+store.dispatch(buyCake());
+store.dispatch(buyCake());
+store.dispatch(buyCake());
+store.dispatch(buyCake());
+
+unsubscribe();
