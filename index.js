@@ -5,6 +5,14 @@ const createStore = redux.createStore;
 //import {createStore} from 'redux';
 const combineReducers = redux.combineReducers;  // combines multiple reducers into one!
 
+//Adding middleware
+
+const ReduxLogger = require('redux-logger');
+const Logger = ReduxLogger.createLogger();
+
+//Applying middleware
+const applyMiddleware = redux.applyMiddleware
+
 
 
 // Action
@@ -88,13 +96,16 @@ const rootReducer = combineReducers({
     icecream: IcecreamReducer
 })
 
-const store = createStore (rootReducer);
+const store = createStore (rootReducer, applyMiddleware(Logger));
 
 console.log('Initial State', store.getState());
 
 // store.unSubscribe = store.subscribe(() => console.log('Updated State', store.getState()));
 
-store.subscribe(() => console.log('Updated State', store.getState()));
+// store.subscribe(() => console.log('Updated State', store.getState()));
+// removing console statement as we're using middleware here!
+
+store.subscribe(() => { })
 
 store.dispatch(buyCake());
 store.dispatch(buyCake());
