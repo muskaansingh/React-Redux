@@ -15,10 +15,12 @@ const applyMiddleware = redux.applyMiddleware
 
 
 
-// Action
+// Actions
 
 const BUY_CAKE = 'BUY_CAKE';
 const BUY_ICECREAM = 'BUY_ICECREAM';
+
+// Action creators
 
 function buyCake() {
     return {
